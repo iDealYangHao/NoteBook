@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include <QTextEdit>
 
+#include "menubar.h"
+#include "toolbar.h"
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -13,5 +16,7 @@ public:
     ~MainWindow();
 
     QTextEdit *centralWidget;
+    MenuBar *myMenuBar;
+    ToolBar *myToolBar;
 };
 #endif // MAINWINDOW_H
