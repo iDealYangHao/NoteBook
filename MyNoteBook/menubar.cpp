@@ -2,6 +2,9 @@
 #include <QKeySequence>
 #include <QFileDialog>
 #include <QDebug>
+#include <QFile>
+#include <QIODevice>
+#include <QByteArray>
 
 MenuBar::MenuBar(QWidget *parent)
     : QMenuBar(parent)
@@ -23,6 +26,10 @@ MenuBar::MenuBar(QWidget *parent)
     connect(action1, &QAction::triggered, this, [=]()
     {
         auto fileName = QFileDialog::getOpenFileName(this, "Open file",QDir::homePath());
-        qDebug() << fileName;
+        QFile selectFile(fileName);
+        if (!selectFile.open(QIODevice::ReadWrite | QIODevice::Text))
+            return;
+        QByteArray array = selectFile.readAll();
+        emit fileContent(array);
     });
 }

@@ -15,6 +15,11 @@ MainWindow::MainWindow(QWidget *parent)
     auto action1 = myMenuBar->fileMenu->actions().at(0);
     myToolBar->addAction(action1);
     resize(800,600);
+    setCentralWidget(centralWidget);
+    connect(myMenuBar, &MenuBar::fileContent, this, [=](const QByteArray &content)
+    {
+        centralWidget->setText(content.toStdString().data());
+    });
 }
 
 MainWindow::~MainWindow()

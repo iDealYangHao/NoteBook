@@ -11,6 +11,9 @@ public:
 
     QMenu *fileMenu;
     QMenu *settingMenu;
+
+signals:
+    void fileContent(QByteArray array);
 };
 
 #endif // MENUBAR_H
