@@ -18,5 +18,8 @@ public:
     QTextEdit *centralWidget;
     MenuBar *myMenuBar;
     ToolBar *myToolBar;
+
+private slots:
+    void on_saveFile(QString fileName);
 };
 #endif // MAINWINDOW_H
